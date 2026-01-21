@@ -79,7 +79,7 @@ const duration = songs.reduce((acc, song) => {
 totalSongs.textContent = `Total songs: ${songs.length}`;
 totalDuration.textContent = `Total duration: ${duration} seconds`;
 
-songDetails = songList.addEventListener("click", (event) => {
+songList.addEventListener("click", (event) => {
   const clickedSong = event.target.closest(".song");
 
   if (!clickedSong) {
@@ -94,9 +94,10 @@ songDetails = songList.addEventListener("click", (event) => {
 
   songDetails.innerHTML = `
     <span class="title">${song.title}</span>
-    <span class="title">${song.album}</span>
+    <span class="album">${song.album}</span>
     <span class="artist">${song.artist}</span>
-    <span class="title">${song.duration}</span>
-    <span class="title">${song.plays}</span>
+    <span class="duration">${song.duration}</span>
+    <span class="plays">${song.plays}</span>
+    <span class="releaseYear">${song.releaseYear}</span>
   `;
 })
