@@ -3,11 +3,44 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page</title>
+    <title>Spotify Clone App</title>
   <!-- Links to CSS or other metadata go here -->
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <!-- All visible content goes here (headings, paragraphs, images, etc.) -->
+    <header>
+      <h1>Spotify Clone App</h1>
+    </header>
+    
+    <main>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search songs.."
+        >
+
+        <div id="sort-buttons">
+          <button id="sort-title">Sort by Title</button>
+          <button id="sort-artist">Sort by Artist</button>
+          <button id="sort-duration">Sort by Duration</button>
+          <button id="sort-plays">Sort by Most Played</button>
+          <button id="top-five">Top 5 Most Played</button>
+        </div>
+
+        <div id="stats">
+          <span id="total-songs"></span>
+          <span id="total-duration"></span>
+        </div>
+
+        <div id="song-list">
+          <!--JavaScript will inject songs here-->
+        </div>
+
+        <div id="song-details"></div>
+    </main>
+
+    <script type="module" src="data.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

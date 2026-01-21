@@ -1,119 +1,102 @@
-export const songs = [
-  {
-    id: 1,
-    title: "Blinding Lights",
-    artist: "The Weeknd",
-    album: "After Hours",
-    genre: "Pop",
-    duration: 200,
-    plays: 1250000,
-    releaseYear: 2020,
-    audioUrl: "/songs/blinding-lights.mp3",
-    coverImage: "/images/after-hours.jpg",
-    isExplicit: false,
-  },
-  {
-    id: 2,
-    title: "HUMBLE.",
-    artist: "Kendrick Lamar",
-    album: "DAMN.",
-    genre: "Hip-Hop",
-    duration: 177,
-    plays: 3200000,
-    releaseYear: 2017,
-    audioUrl: "/songs/humble.mp3",
-    coverImage: "/images/damn.jpg",
-    isExplicit: true,
-  },
-  {
-    id: 3,
-    title: "Levitating",
-    artist: "Dua Lipa",
-    album: "Future Nostalgia",
-    genre: "Pop",
-    duration: 203,
-    plays: 980000,
-    releaseYear: 2021,
-    audioUrl: "/songs/levitating.mp3",
-    coverImage: "/images/future-nostalgia.jpg",
-    isExplicit: false,
-  },
-  {
-    id: 4,
-    title: "Take Five",
-    artist: "Dave Brubeck",
-    album: "Time Out",
-    genre: "Jazz",
-    duration: 324,
-    plays: 450000,
-    releaseYear: 1959,
-    audioUrl: "/songs/take-five.mp3",
-    coverImage: "/images/time-out.jpg",
-    isExplicit: false,
-  },
-  {
-    id: 5,
-    title: "Smells Like Teen Spirit",
-    artist: "Nirvana",
-    album: "Nevermind",
-    genre: "Rock",
-    duration: 301,
-    plays: 2100000,
-    releaseYear: 1991,
-    audioUrl: "/songs/teen-spirit.mp3",
-    coverImage: "/images/nevermind.jpg",
-    isExplicit: true,
-  },
-  {
-    id: 6,
-    title: "Bad Guy",
-    artist: "Billie Eilish",
-    album: "When We All Fall Asleep",
-    genre: "Pop",
-    duration: 194,
-    plays: 1750000,
-    releaseYear: 2019,
-    audioUrl: "/songs/bad-guy.mp3",
-    coverImage: "/images/bad-guy.jpg",
-    isExplicit: false,
-  },
-  {
-    id: 7,
-    title: "Lose Yourself",
-    artist: "Eminem",
-    album: "8 Mile",
-    genre: "Hip-Hop",
-    duration: 326,
-    plays: 2900000,
-    releaseYear: 2002,
-    audioUrl: "/songs/lose-yourself.mp3",
-    coverImage: "/images/8mile.jpg",
-    isExplicit: true,
-  },
-  {
-    id: 8,
-    title: "Bohemian Rhapsody",
-    artist: "Queen",
-    album: "A Night at the Opera",
-    genre: "Rock",
-    duration: 354,
-    plays: 4000000,
-    releaseYear: 1975,
-    audioUrl: "/songs/bohemian-rhapsody.mp3",
-    coverImage: "/images/queen.jpg",
-    isExplicit: false,
-  },
-  {
-    id: 9,
-    title: "So What",
-    artist: "Miles Davis",
-    album: "Kind of Blue",
-    genre: "Jazz",
-    duration: 545,
-    plays: 300000,
-    releaseYear: 1959,
-    audioUrl: "/songs/so-what.mp3",
-    coverImage: "/images/kind-of-blue.jpg",
-    isExplicit: false,
-  },
-];
+import { songs } from "./data.js";
+
+const songList = document.getElementById("song-list");
+const searchInput = document.getElementById("search-input");
+const sortByTitle = document.getElementById("sort-title");
+const sortByArtist = document.getElementById("sort-artist");
+const sortByDuration = document.getElementById("sort-duration");
+const sortByPlays = document.getElementById("sort-plays");
+const topFivePlays = document.getElementById("top-five");
+const totalSongs = document.getElementById('total-songs');
+const totalDuration = document.getElementById('total-duration');
+const songDetails = document.getElementById('song-details');
+
+function displaySongs(songsToDisplay) {
+  songList.innerHTML = "";
+
+  songsToDisplay.forEach((song) => {
+     songList.innerHTML += `
+      <div class="song" data-id="${song.id}">
+        <img src="${song.coverImage}">
+        <span class="title">${song.title}</span>
+        <span class="artist">${song.artist}</span>
+      </div>
+    `;
+  });
+}
+
+displaySongs(songs);
+
+searchInput.addEventListener("input", (event) => {
+const searchTerm = event.target.value.toLowerCase();
+  const filtered = songs.filter((song) => {
+    return song.title.toLowerCase().includes(searchTerm);
+  });
+
+  displaySongs(filtered);
+});
+
+sortByTitle.addEventListener("click", () => {
+  const sortedTitle = songs.sort((a, b) => {
+    return a.title.localeCompare(b.title); // A-Z
+  });
+  displaySongs(sortedTitle);
+});
+
+sortByArtist.addEventListener("click", () => {
+  const sortedArtist = songs.sort((a, b) => {
+    return a.artist.localeCompare(b.artist); // A-Z
+  })
+  displaySongs(sortedArtist);
+});
+
+sortByDuration.addEventListener("click", () => {
+  const sortedDuration = songs.sort((a, b) => {
+    return a.duration - b.duration; // Shortest first
+  })
+  displaySongs(sortedDuration);
+});
+
+sortByPlays.addEventListener("click", () => {
+  const sortedPlays = songs.sort((a, b) => {
+    return b.plays - a.plays; // Most played first
+  })
+  displaySongs(sortedPlays);
+})
+
+topFivePlays.addEventListener("click", () => {
+  const topFive =
+    songs.sort((a, b) => b.plays - a.plays).slice(0, 5);
+  displaySongs(topFive);
+});
+
+// Calculate total duration using reduce 
+const duration = songs.reduce((acc, song) => {
+  return acc + song.duration;
+}, 0)
+
+// Display the stats
+totalSongs.textContent = `Total songs: ${songs.length}`;
+totalDuration.textContent = `Total duration: ${duration} seconds`;
+
+songDetails = songList.addEventListener("click", (event) => {
+  const clickedSong = event.target.closest(".song");
+
+  if (!clickedSong) {
+    return;
+  }
+
+  const id = Number(clickedSong.dataset.id);
+
+  const song = songs.find((song) => {
+    return song.id === id;
+  });
+
+  songDetails.innerHTML = `
+    <span class="title">${song.title}</span>
+    <span class="title">${song.album}</span>
+    <span class="artist">${song.artist}</span>
+    <span class="title">${song.duration}</span>
+    <span class="title">${song.plays}</span>
+  `;
+})
