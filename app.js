@@ -30,7 +30,8 @@ displaySongs(songs);
 searchInput.addEventListener("input", (event) => {
 const searchTerm = event.target.value.toLowerCase();
   const filtered = songs.filter((song) => {
-    return song.title.toLowerCase().includes(searchTerm);
+    return song.title.toLowerCase().includes(searchTerm) || 
+    song.artist.toLowerCase().includes(searchTerm);
   });
 
   displaySongs(filtered);
