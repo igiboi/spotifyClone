@@ -9,7 +9,7 @@ export const songs = [
     plays: 1250000,
     releaseYear: 2020,
     audioUrl: "/songs/blinding-lights.mp3",
-    coverImage: "/images/after-hours.jpg",
+    coverImage: "https://picsum.photos/seed/afterhours/200",
     isExplicit: false,
   },
   {
@@ -22,7 +22,7 @@ export const songs = [
     plays: 3200000,
     releaseYear: 2017,
     audioUrl: "/songs/humble.mp3",
-    coverImage: "/images/damn.jpg",
+    coverImage: "https://picsum.photos/seed/damn/200",
     isExplicit: true,
   },
   {
@@ -35,7 +35,7 @@ export const songs = [
     plays: 980000,
     releaseYear: 2021,
     audioUrl: "/songs/levitating.mp3",
-    coverImage: "/images/future-nostalgia.jpg",
+    coverImage: "https://picsum.photos/seed/futurenostalgia/200",
     isExplicit: false,
   },
   {
@@ -48,7 +48,7 @@ export const songs = [
     plays: 450000,
     releaseYear: 1959,
     audioUrl: "/songs/take-five.mp3",
-    coverImage: "/images/time-out.jpg",
+    coverImage: "https://picsum.photos/seed/timeout/200",
     isExplicit: false,
   },
   {
@@ -61,7 +61,7 @@ export const songs = [
     plays: 2100000,
     releaseYear: 1991,
     audioUrl: "/songs/teen-spirit.mp3",
-    coverImage: "/images/nevermind.jpg",
+    coverImage: "https://picsum.photos/seed/nevermind/200",
     isExplicit: true,
   },
   {
@@ -74,7 +74,7 @@ export const songs = [
     plays: 1750000,
     releaseYear: 2019,
     audioUrl: "/songs/bad-guy.mp3",
-    coverImage: "/images/bad-guy.jpg",
+    coverImage: "https://picsum.photos/seed/badguy/200",
     isExplicit: false,
   },
   {
@@ -87,7 +87,7 @@ export const songs = [
     plays: 2900000,
     releaseYear: 2002,
     audioUrl: "/songs/lose-yourself.mp3",
-    coverImage: "/images/8mile.jpg",
+    coverImage: "https://picsum.photos/seed/8mile/200",
     isExplicit: true,
   },
   {
@@ -100,7 +100,7 @@ export const songs = [
     plays: 4000000,
     releaseYear: 1975,
     audioUrl: "/songs/bohemian-rhapsody.mp3",
-    coverImage: "/images/queen.jpg",
+    coverImage: "https://picsum.photos/seed/queen/200",
     isExplicit: false,
   },
   {
@@ -113,7 +113,7 @@ export const songs = [
     plays: 300000,
     releaseYear: 1959,
     audioUrl: "/songs/so-what.mp3",
-    coverImage: "/images/kind-of-blue.jpg",
+    coverImage: "https://picsum.photos/seed/kindofblue/200",
     isExplicit: false,
   },
 ];

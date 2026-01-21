@@ -15,7 +15,7 @@ function displaySongs(songsToDisplay) {
   songList.innerHTML = "";
 
   songsToDisplay.forEach((song) => {
-     songList.innerHTML += `
+    songList.innerHTML += `
       <div class="song" data-id="${song.id}">
         <img src="${song.coverImage}">
         <span class="title">${song.title}</span>
@@ -93,12 +93,15 @@ songList.addEventListener("click", (event) => {
     return song.id === id;
   });
 
+  // Deconstructure 
+  const { title, album, artist, duration, plays, releaseYear } = song;
+
   songDetails.innerHTML = `
-    <span class="title">${song.title}</span>
-    <span class="album">${song.album}</span>
-    <span class="artist">${song.artist}</span>
-    <span class="duration">${song.duration}</span>
-    <span class="plays">${song.plays}</span>
-    <span class="releaseYear">${song.releaseYear}</span>
+    <span class="title">${title}</span>
+    <span class="album">${album}</span>
+    <span class="artist">${artist}</span>
+    <span class="duration">${duration}</span>
+    <span class="plays">${plays}</span>
+    <span class="releaseYear">${releaseYear}</span>
   `;
-})
+});
